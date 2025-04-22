@@ -1,0 +1,237 @@
+# Overview
+This project is a web-based chess application that allows users to play chess against a computer opponent. The application focuses on providing a seamless experience where users can maintain multiple ongoing games and continue them at any time. The primary value proposition is the ability to save game states and resume play later, making it perfect for users who enjoy playing chess but may not have time to complete games in a single sitting.
+
+# Core Features
+
+1. User Authentication
+   - JWT-based authentication system
+   - Simple login/logout functionality
+   - Secure session management
+   - Why: Enables personal game tracking and state persistence
+   - How: Spring Boot backend with JWT tokens, AngularJS frontend handling auth state
+
+2. Chess Game Interface
+   - Interactive chess board
+   - Legal move validation
+   - Computer opponent moves
+   - Game state visualization
+   - Why: Core gameplay functionality
+   - How: AngularJS chess board component with move validation logic
+
+3. Game State Management
+   - Automatic save after each move
+   - List of in-progress games
+   - Ability to resume any saved game
+   - Why: Enables the key differentiating feature of game persistence
+   - How: MySQL database storing game states, REST API for state management
+
+# User Experience
+
+User Personas:
+1. Casual Chess Player
+   - Wants to play chess in short sessions
+   - Needs ability to save and resume games
+   - Prefers simple, straightforward interface
+
+2. Learning Player
+   - Wants to practice against computer
+   - Needs clear game state visualization
+   - Appreciates being able to review past moves
+
+Key User Flows:
+1. Authentication Flow
+   - User arrives at login page
+   - Enters credentials
+   - Receives JWT token
+   - Redirected to game dashboard
+
+2. Game Flow
+   - User starts new game or selects existing game
+   - Makes moves on chess board
+   - Game state automatically saved
+   - Can leave and return at any time
+
+UI/UX Considerations:
+- Clean, minimalist interface
+- Responsive design for various screen sizes
+- Clear visual feedback for moves and game state
+- Intuitive navigation between games
+
+# Technical Architecture
+
+System Components:
+1. Frontend (AngularJS):
+   - Authentication module
+   - Chess board component
+   - Game list component
+   - Move validation logic
+   - State management
+
+2. Backend (Spring Boot):
+   - JWT authentication controller
+   - Game state controller
+   - Chess engine integration
+   - Database interaction layer
+
+3. Database (MySQL):
+   - User credentials
+   - Game states
+   - Move history
+
+Data Models:
+1. User:
+   - id (BIGINT)
+   - username (VARCHAR)
+   - password (VARCHAR, hashed)
+
+2. Game:
+   - id (BIGINT)
+   - user_id (BIGINT)
+   - current_state (TEXT)
+   - start_time (TIMESTAMP)
+   - last_move_time (TIMESTAMP)
+   - status (VARCHAR)
+
+3. Move:
+   - id (BIGINT)
+   - game_id (BIGINT)
+   - move_number (INT)
+   - from_position (VARCHAR)
+   - to_position (VARCHAR)
+   - timestamp (TIMESTAMP)
+
+APIs:
+1. Authentication:
+   - POST /api/auth/login
+   - POST /api/auth/logout
+
+2. Game Management:
+   - GET /api/games
+   - POST /api/games
+   - GET /api/games/{id}
+   - POST /api/games/{id}/move
+
+# Development Roadmap
+
+Phase 1 - MVP:
+1. Basic Authentication
+   - Login/logout functionality
+   - JWT token management
+   - Simple user storage
+
+2. Core Chess Implementation
+   - Chess board UI
+   - Basic move validation
+   - Simple computer opponent
+   - Game state persistence
+
+3. Game Management
+   - Create new game
+   - List existing games
+   - Load saved game
+   - Save game state
+
+Phase 2 - Enhancements:
+1. Improved Chess Features
+   - Advanced move validation
+   - Better computer opponent AI
+   - Move history display
+   - Game status indicators
+
+2. User Experience
+   - Responsive design
+   - Move animations
+   - Game statistics
+   - UI/UX improvements
+
+Phase 3 - Advanced Features:
+1. Game Analysis
+   - Move notation
+   - Basic game analysis
+   - Export game history
+
+2. User Management
+   - User profiles
+   - Password reset
+   - Account management
+
+# Logical Dependency Chain
+
+Foundation First:
+1. Authentication system
+   - User model
+   - JWT implementation
+   - Login/logout endpoints
+
+2. Basic Game Structure
+   - Database schema
+   - Game state management
+   - API endpoints
+
+3. Chess Logic
+   - Board representation
+   - Move validation
+   - Computer opponent
+
+Building Up:
+1. Frontend Development
+   - Authentication UI
+   - Chess board component
+   - Game list view
+
+2. State Management
+   - Save/load functionality
+   - Game persistence
+   - Move history
+
+3. Feature Integration
+   - Connect all components
+   - End-to-end testing
+   - Performance optimization
+
+# Risks and Mitigations
+
+Technical Challenges:
+1. Chess Engine Complexity
+   - Risk: Implementing correct chess rules and computer opponent
+   - Mitigation: Use established chess libraries, start with basic computer opponent
+
+2. State Management
+   - Risk: Race conditions in game state updates
+   - Mitigation: Implement proper locking and validation
+
+3. Performance
+   - Risk: Slow game state loading/saving
+   - Mitigation: Efficient state serialization, proper indexing
+
+MVP Considerations:
+1. Scope Control
+   - Risk: Feature creep
+   - Mitigation: Strict adherence to MVP features
+
+2. Technical Debt
+   - Risk: Rushing implementation
+   - Mitigation: Regular code reviews, maintainable architecture
+
+# Appendix
+
+Technical Specifications:
+1. Frontend:
+   - AngularJS
+   - HTML5/CSS3
+   - Responsive design
+
+2. Backend:
+   - Java Spring Boot
+   - JWT Authentication
+   - RESTful API
+
+3. Database:
+   - MySQL
+   - Proper indexing
+   - Regular backups
+
+4. Development Tools:
+   - Git for version control
+   - Maven/Gradle for dependency management
+   - Automated testing framework 
