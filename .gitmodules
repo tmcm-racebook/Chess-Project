@@ -1,0 +1,3 @@
+[submodule "ChessWebAppFrontend"]
+	path = ChessWebAppFrontend
+	url = https://github.com/tmcm-racebook/ChessWebAppFrontend.git
