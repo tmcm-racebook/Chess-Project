@@ -73,7 +73,8 @@
               "buildTarget": "chess-frontend:build:production"
             },
             "development": {
-              "buildTarget": "chess-frontend:build:development"
+              "buildTarget": "chess-frontend:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

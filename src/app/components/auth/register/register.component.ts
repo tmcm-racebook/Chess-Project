@@ -1,0 +1,9 @@
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+
+@Component({
+  // ... existing metadata ...
+  imports: [CommonModule, ReactiveFormsModule],
+  // ... existing metadata ...
+})
+// ... existing code ... 
