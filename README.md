@@ -73,7 +73,7 @@ The backend server will start on http://localhost:8080
 
 3. Start the development server:
    ```bash
-   ng serve
+   ng serve --proxy-config proxy.conf.json
    ```
 
 The frontend application will be available at http://localhost:4200
